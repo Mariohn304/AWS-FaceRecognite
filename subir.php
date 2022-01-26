@@ -18,7 +18,7 @@ use Aws\Exception\MultipartUploadException;
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->safeLoad();
 
-$archivo = $_FILES["archivo"];
+$archivo = $_FILES['archivo'];
 $type = mime_content_type($archivo['tmp_name']);
 
 if ($type === "image/png" or $type === "image/jpeg" or $type === "image/jpg") {
@@ -32,7 +32,7 @@ if ($type === "image/png" or $type === "image/jpeg" or $type === "image/jpg") {
     
     if(move_uploaded_file($tmp_name, $uploadedFile)) {
         uploadFileToBucket($uploadedFile,$nameExtension);
-        header('Location: https://informatica.ieszaidinvergeles.org:10052/pia/upload/aws-prueba/ejemplo2.php?file='. $uploadedFile . '&name=' . $nameExtension);
+        header('Location: https://informatica.ieszaidinvergeles.org:10052/pia/upload/AWS-FaceRecognite/ejemplo2.php?file='. $uploadedFile . '&name=' . $nameExtension);
         exit;
         return [$uploadedFile, $uniqueName . '.' . $extension, $uniqueName, $extension];
         
